@@ -1,5 +1,3 @@
-import time
-
 import allure
 
 from locators.burger_locators import OrdersLocators
@@ -32,9 +30,14 @@ class CreateOrderPage(BasePage):
     def is_order_id_found_at_history(self, order_number):
         return self.check_order_id(order_number, OrdersLocators.ALL_ORDERS_IN_HISTORY)
 
+    @allure.step('Переход на страницу Лента заказов')
+    def click_orders_list(self):
+        self.move_to_element_and_click(OrdersLocators.ORDER_FEED_BUTTON)
+        self.wait_until_element_visibility(OrdersLocators.ORDERS_LIST_HEADER)
+
     @allure.step("Получение количества заказов")
     def get_total_order_count_daily(self, locator):
-        time.sleep(1)
+        BasePage.wait_for_element_to_be_clickable(locator)
         return self.get_actually_text(locator)
 
     @allure.step('Получение номер заказа')

@@ -3,7 +3,6 @@ from selenium.webdriver.common.by import By
 
 class MainPageLocators:
     CONSTRUCTOR_BUTTON = By.XPATH, "//a[.='Конструктор']"  # кнопка "Конструктор"
-    ORDER_FEED_BUTTON = By.XPATH, "//a[.='Лента Заказов']"  # кнопка "Лента заказов"
     BURGER_INGREDIENT_BUTTON = By.XPATH, ".//img[@alt='Флюоресцентная булка R2-D3']"  # кнопка "Флюоресцентная булка"
     BURGER_INGREDIENT_DETAILS = By.XPATH, ".//h2[text()='Детали ингредиента']"  # строка "Детали ингредиента"
     CLOSE_MODAL_BUTTON = By.XPATH, "//*[@id='root']/div/section[1]/div[1]/button"  # кнопка закрытия модального окна
@@ -12,13 +11,13 @@ class MainPageLocators:
     BURGER_INGREDIENT_COUNTER = By.XPATH, ".//p[contains(@class, 'num')]"  # Счетчик ингредиента
     CREATE_ORDER_BUTTON = By.XPATH, "//button[text()='Оформить заказ']"  # кнопка "Оформить заказ"
     ORDER_STATUS_INFO = By.XPATH, ".//p[contains (text(),  'Ваш заказ начали готовить')]"  # строка "Ваш заказ начали готовить"
-    PROFILE_BUTTON = By.XPATH, ".//p[text()='Личный Кабинет']"
-    LK_BUTTON = By.XPATH, ".//button[text()='Войти в аккаунт']"
     MAIN_PAGE_HEADER = By.XPATH, "//h1[text()='Соберите бургер']"
     ORDER_ID = (By.CLASS_NAME, "Modal_modal__title_shadow__3ikwq")
 
 
-class LoginLocators:
+class LoginUserPageLocators:
+    LK_BUTTON = By.XPATH, ".//button[text()='Войти в аккаунт']"
+    PROFILE_BUTTON = By.XPATH, ".//p[text()='Личный Кабинет']"
     EMAIL_FIELD = By.XPATH, ".//label[text()='Email']//parent::*/input"
     PASSWORD_FIELD = By.XPATH, ".//input[@type='password']"
     LOGIN_BUTTON_ANY_FORMS = By.XPATH, ".//button[text()='Войти']"
@@ -37,6 +36,7 @@ class ForgotPasswordlocators:
 
 class OrdersLocators:
     ORDERS_LIST_HEADER = By.XPATH, "//h1[text()='Лента заказов']"  # Заголовок "Лента заказов"
+    ORDER_FEED_BUTTON = By.XPATH, "//a[.='Лента Заказов']"  # кнопка "Лента заказов"
     ORDER_ELEMENTS = By.XPATH, "//p[text()='Cостав']"
     ORDER_HISTORY_LINK = By.XPATH, "//*[contains(@class, 'OrderHistory_link')]"
     ALL_ORDERS_IN_HISTORY = By.XPATH, ("//div[contains(@class, 'OrderHistory_textBox__3lgbs')]/p[contains(@class, "

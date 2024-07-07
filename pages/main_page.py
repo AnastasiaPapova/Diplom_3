@@ -1,7 +1,6 @@
 import allure
-import time
 
-from locators.burger_locators import MainPageLocators, LoginLocators, OrdersLocators
+from locators.burger_locators import MainPageLocators, LoginUserPageLocators
 from pages.base_page import BasePage
 
 
@@ -9,12 +8,7 @@ class MainPage(BasePage):
 
     @allure.step('Перейти в "ЛК" по кнопке "Личный кабинет"')
     def click_on_account(self):
-        self.click_on_element(MainPageLocators.PROFILE_BUTTON)
-
-    @allure.step('Переход на страницу Лента заказов')
-    def click_orders_list(self):
-        self.move_to_element_and_click(MainPageLocators.ORDER_FEED_BUTTON)
-        self.wait_until_element_visibility(OrdersLocators.ORDERS_LIST_HEADER)
+        self.click_on_element(LoginUserPageLocators.PROFILE_BUTTON)
 
     @allure.step('Переход в "Конструктор"')
     def click_constructor_button(self):
@@ -55,7 +49,9 @@ class MainPage(BasePage):
 
     @allure.step('Нажать на кнопку Оформить заказ')
     def click_order_button(self):
-        self.move_to_element_and_click(MainPageLocators.CREATE_ORDER_BUTTON)
+        # self.move_to_element_and_click(MainPageLocators.CREATE_ORDER_BUTTON)
+        self.wait_for_element_to_be_clickable(MainPageLocators.CREATE_ORDER_BUTTON)
+        self.click_on_element(MainPageLocators.CREATE_ORDER_BUTTON)
 
     @allure.step('Проверка оформления заказа и его идентификатора')
     def check_show_window_with_order_id(self):

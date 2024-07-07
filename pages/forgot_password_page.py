@@ -1,5 +1,5 @@
 import allure
-from locators.burger_locators import ForgotPasswordlocators, LoginLocators
+from locators.burger_locators import ForgotPasswordlocators, LoginUserPageLocators
 from pages.base_page import BasePage
 
 
@@ -7,7 +7,7 @@ class PasswordRecoveryPage(BasePage):
 
     @allure.step('Нажать на "Восстановить пароль"')
     def click_password_reset_link(self):
-        self.click_on_element(LoginLocators.FORGOT_PASSWORD)
+        self.click_on_element(LoginUserPageLocators.FORGOT_PASSWORD)
 
     @allure.step('Заполнение поля емейл для восстановления пароля')
     def set_email_for_reset_password(self, email):

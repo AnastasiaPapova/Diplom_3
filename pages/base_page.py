@@ -17,9 +17,12 @@ class BasePage:
     def click_on_element(self, locator):
         self.driver.find_element(*locator).click()
 
+    @allure.step("Дождаться кликабельности элемента")
+    def wait_for_element_to_be_clickable(self, locator):
+        WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(locator))
+
     @allure.step("Вставить текст {text}")
     def set_text(self, locator, text):
-        WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(locator))
         self.driver.find_element(*locator).send_keys(text)
 
     @allure.step("Получить текущий текст")
@@ -58,9 +61,6 @@ class BasePage:
         actions = ActionChains(self.driver)
         actions.move_to_element(element).click().perform()
 
-    @allure.step("Дождаться кликабельности элемента")
-    def wait_for_element_to_be_clickable(self, locator):
-        WebDriverWait(self.driver, 3).until(EC.element_to_be_clickable(locator))
 
     @allure.step("Найти элементы")
     def find_elements(self, locator):
